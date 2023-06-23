@@ -1,81 +1,61 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+  <main class="grid h-screen place-items-center bg-neutral-100 py-12 md:py-24">
+    <div
+      class="mx-auto flex max-w-4xl flex-col space-y-8 md:flex-row md:space-x-4"
+    >
+      <div
+        class="flex max-w-lg flex-col items-center md:basis-1/2 md:items-start"
+      >
+        <div class="h-16 w-36 rounded-xl bg-rafblue px-2 pt-1 md:h-24 md:w-48">
+          <img src="rafRev.png" alt="Raf Logo" />
+        </div>
+        <div class="my-4 px-4 md:w-3/4 md:px-0">
+          <h1 class="text-center text-4xl font-bold md:text-left md:text-5xl">
+            Support the best in British aviation
+          </h1>
+          <p class="text-center md:text-left">
+            The Red Arrows charity ball is taking place on August 8th secure
+            your ticket now for what will be a brilliant night
+          </p>
+        </div>
+        <button
+          class="w-64 rounded bg-rafred px-4 py-2 text-xl font-semibold text-white"
+          >Book your ticket</button
+        >
+      </div>
+      <div class="flex items-center md:basis-1/2" x-data="{ bobbing: true }">
+        <div class="bobbing aspect-video rounded-xl border-8">
+          <video
+            data-dashjs-player=""
+            autoplay
+            src="https://customer-drd555xwunugst2w.cloudflarestream.com/5cf5bc999279967f7532cad408bc9854/manifest/video.mpd"
+            loop></video>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  /* Set the bobbing animation */
+  @keyframes bob {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .bobbing {
+    animation: bob 4s ease-in-out infinite;
+  }
 </style>
