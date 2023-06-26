@@ -1,61 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import About from "../components/About.astro";
 ---
 
 <Layout title="RAF charity dinner">
-  <main class="grid h-screen place-items-center bg-neutral-100 py-12 md:py-24">
+  <main x-data="{ aboutOpen: false }" @keydown.escape="aboutOpen = false">
+    <About />
     <div
-      class="mx-auto flex max-w-4xl flex-col space-y-8 md:flex-row md:space-x-4"
+      class="h-screen bg-[url('/public/rarrowXL.jpeg')] bg-cover bg-center bg-no-repeat"
+      id="hero"
     >
       <div
-        class="flex max-w-lg flex-col items-center md:basis-1/2 md:items-start"
+        class="mx-auto flex h-full max-w-7xl flex-col items-center justify-between py-6"
       >
-        <div class="h-16 w-36 rounded-xl bg-rafblue px-2 pt-1 md:h-24 md:w-48">
-          <img src="rafRev.png" alt="Raf Logo" />
-        </div>
-        <div class="my-4 px-4 md:w-3/4 md:px-0">
-          <h1 class="text-center text-4xl font-bold md:text-left md:text-5xl">
-            Support the best in British aviation
-          </h1>
-          <p class="text-center md:text-left">
-            The Red Arrows charity ball is taking place on August 8th. Secure
-            your ticket for a brilliant night
-          </p>
-        </div>
-        <button
-          class="w-64 rounded bg-rafred px-4 py-2 text-xl font-semibold text-white hover:bg-red-700"
-          >Book your ticket</button
+        <div
+          class="h-16 w-36 rounded-xl bg-neutral-200 px-2 pt-1 md:h-24 md:w-48"
         >
-      </div>
-      <div class="flex items-center md:basis-1/2" x-data="{ bobbing: true }">
-        <div class="bobbing aspect-video rounded-xl border-8">
-          <video
-            data-dashjs-player=""
-            src="https://customer-drd555xwunugst2w.cloudflarestream.com/5cf5bc999279967f7532cad408bc9854/manifest/video.mpd"
-            loop
-            autoplay
-            muted></video>
+          <img src="rarrowLogo.png" alt="Raf Logo" />
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div
+            class="flex flex-col items-center space-y-4 bg-slate-800/10 p-4 sm:rounded-xl sm:bg-slate-800/5"
+            x-data
+          >
+            <div class="space-y-2">
+              <h1 class="text-center text-4xl font-bold text-white md:text-5xl">
+                Support the best in British aviation
+              </h1>
+              <p class="text-center text-lg font-medium">
+                The Red Arrows Charity Trust supports worthy causes throughout
+                the UK.
+              </p>
+            </div>
+            <div
+              class="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0"
+            >
+              <button
+                class="rounded bg-rafred px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-red-700"
+                x-on:click="window.alert('Redirect to Stripe or other payment provider')"
+                >Make a donation</button
+              >
+              <button
+                class="rounded px-4 py-2 text-xl font-semibold text-govblue underline underline-offset-2 transition-colors hover:text-rafblue hover:decoration-4"
+                x-on:click="aboutOpen = true">About us</button
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </Layout>
-
-<style>
-  /* Set the bobbing animation */
-  @keyframes bob {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  .bobbing {
-    animation: bob 4s ease-in-out infinite;
-  }
-</style>
+<!-- <video
+data-dashjs-player=""
+src="https://customer-drd555xwunugst2w.cloudflarestream.com/5cf5bc999279967f7532cad408bc9854/manifest/video.mpd"
+loop
+muted></video> -->
