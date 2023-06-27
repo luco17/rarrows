@@ -17,15 +17,30 @@ const { title } = Astro.props;
     <title>{title}</title>
     <!-- <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script> -->
     <style is:global>
-      .smoke {
-        position: fixed;
-        width: 12px;
-        height: 12px;
-        background-color: whitesmoke;
-        border-radius: 40%;
-        opacity: 0;
-        transform: scale(0.2);
-        animation: smokeTrail 1.5s;
+      .red-trail {
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 4px;
+        background: orangered;
+        pointer-events: none;
+      }
+
+      .blue-trail {
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 4px;
+        background: dodgerblue;
+        pointer-events: none;
+      }
+
+      .white-trail {
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 4px;
+        background: whitesmoke;
         pointer-events: none;
       }
 
@@ -48,22 +63,106 @@ const { title } = Astro.props;
   <body class="scroll-smooth">
     <slot />
     <script>
-      document.addEventListener("mousemove", function (e) {
-        createSmokeTrail(e.pageX, e.pageY);
+      // dots is an array of Dot objects,
+      // mouse is an object used to track the X and Y position
+      // of the mouse, set with a mousemove event listener below
+      var dots = [],
+        mouse = {
+          x: 0,
+          y: 0,
+        };
+
+      // The Dot object used to scaffold the dots
+      var RedDot = function () {
+        this.x = 0;
+        this.y = 0;
+        this.node = (function () {
+          var n = document.createElement("div");
+          n.className = "red-trail";
+          document.body.appendChild(n);
+          return n;
+        })();
+      };
+      var BlueDot = function () {
+        this.x = 0;
+        this.y = 0;
+        this.node = (function () {
+          var n = document.createElement("div");
+          n.className = "blue-trail";
+          document.body.appendChild(n);
+          return n;
+        })();
+      };
+      var WhiteDot = function () {
+        this.x = 0;
+        this.y = 0;
+        this.node = (function () {
+          var n = document.createElement("div");
+          n.className = "white-trail";
+          document.body.appendChild(n);
+          return n;
+        })();
+      };
+
+      // The Dot.prototype.draw() method sets the position of
+      // the object's <div> node
+      RedDot.prototype.draw = function () {
+        this.node.style.left = this.x + "px";
+        this.node.style.top = this.y + "px";
+      };
+      BlueDot.prototype.draw = function () {
+        this.node.style.left = this.x + 1 + "px";
+        this.node.style.top = this.y + 1 + "px";
+      };
+      WhiteDot.prototype.draw = function () {
+        this.node.style.left = this.x + 2 + "px";
+        this.node.style.top = this.y + 2 + "px";
+      };
+
+      // Creates the Dot objects, populates the dots array
+      for (var i = 0; i < 24; i++) {
+        var r = new RedDot();
+        dots.push(r);
+        var w = new WhiteDot();
+        dots.push(w);
+        var b = new BlueDot();
+        dots.push(b);
+      }
+
+      // This is the screen redraw function
+      function draw() {
+        // Make sure the mouse position is set everytime
+        // draw() is called.
+        var x = mouse.x,
+          y = mouse.y;
+
+        // This loop is where all the 90s magic happens
+        dots.forEach(function (dot, index, dots) {
+          var nextDot = dots[index + 1] || dots[0];
+
+          dot.x = x;
+          dot.y = y;
+          dot.draw();
+          x += (nextDot.x - dot.x) * 0.15;
+          y += (nextDot.y - dot.y) * 0.15;
+        });
+      }
+
+      addEventListener("mousemove", function (event) {
+        //event.preventDefault();
+        mouse.x = event.pageX;
+        mouse.y = event.pageY;
       });
 
-      function createSmokeTrail(x, y) {
-        var smoke = document.createElement("div");
-        smoke.classList.add("smoke");
-        smoke.style.left = x + "px";
-        smoke.style.top = y + "px";
-
-        document.body.appendChild(smoke);
-
-        setTimeout(function () {
-          document.body.removeChild(smoke);
-        }, 1500);
+      // animate() calls draw() then recursively calls itself
+      // everytime the screen repaints via requestAnimationFrame().
+      function animate() {
+        draw();
+        requestAnimationFrame(animate);
       }
+
+      // And get it started by calling animate().
+      animate();
     </script>
   </body>
 </html>
