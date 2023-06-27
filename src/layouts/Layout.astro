@@ -15,9 +15,55 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <!-- <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script> -->
+    <style is:global>
+      .smoke {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background-color: whitesmoke;
+        border-radius: 40%;
+        opacity: 0;
+        transform: scale(0.2);
+        animation: smokeTrail 1.5s;
+        pointer-events: none;
+      }
+
+      @keyframes smokeTrail {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.2);
+        }
+      }
+    </style>
   </head>
   <body class="scroll-smooth">
     <slot />
+    <script>
+      document.addEventListener("mousemove", function (e) {
+        createSmokeTrail(e.pageX, e.pageY);
+      });
+
+      function createSmokeTrail(x, y) {
+        var smoke = document.createElement("div");
+        smoke.classList.add("smoke");
+        smoke.style.left = x + "px";
+        smoke.style.top = y + "px";
+
+        document.body.appendChild(smoke);
+
+        setTimeout(function () {
+          document.body.removeChild(smoke);
+        }, 1500);
+      }
+    </script>
   </body>
 </html>
