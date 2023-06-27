@@ -1,0 +1,58 @@
+---
+import AboutSegment from "./AboutSegment.astro";
+
+const aboutText =
+  "The Red Arrows Trust is a charitable organisation dedicated to making a positive impact through partnership and sponsorship of worthy causes. We collaborate with organisations that share our vision of creating a better future for communities across the country.";
+
+const causeText =
+  "Each year, we commit between £100,000 and £150,000 to support a wide range of charitable initiatives. Through our financial contributions and strategic partnerships, we aim to make a meaningful difference in areas such as education, healthcare, social welfare, and environmental conservation.";
+
+const donateText =
+  "Our impact is made possible through the generosity and support of individuals like you. Your contributions, whether financial or through advocacy, are invaluable in helping us continue our mission of supporting and empowering worthy causes across the UK.";
+---
+
+<section
+  class="w-full bg-gradient-to-b from-[#C2CBD3] to-rafaltblue py-8 md:py-16"
+>
+  <div
+    class="mx-auto max-w-6xl space-y-2 px-4 py-8 text-white md:space-y-16 md:px-12 md:py-16"
+  >
+    <AboutSegment
+      title="About the Trust"
+      bodyText={aboutText}
+      imageSrc="castleJets.jpg"
+      altText="Pilot event signing"
+      reversed={false}
+    />
+
+    <AboutSegment
+      title="Causes"
+      bodyText={causeText}
+      imageSrc="bournemouth.jpg"
+      altText="Red arrows at castle"
+      reversed
+    />
+
+    <AboutSegment
+      title="Donations"
+      bodyText={donateText}
+      imageSrc="buck.jpg"
+      altText="Red arrows at coronation"
+      reversed={false}
+    />
+  </div>
+  <hr class="mx-auto max-w-6xl" />
+  <div
+    class="mx-auto flex max-w-6xl flex-col items-center justify-between space-y-4 px-4 pt-4 text-white md:flex-row md:py-12"
+  >
+    <h5 class="text-center text-2xl font-medium md:text-left">
+      Join us in our commitment to building a stronger, more compassionate
+      society.
+    </h5>
+    <button
+      class="w-64 rounded bg-rafred px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-red-700"
+      x-on:click="window.alert('Redirect to Stripe or other payment provider')"
+      >Make a donation</button
+    >
+  </div>
+</section>

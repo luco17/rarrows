@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import About from "../components/About.astro";
+import AboutUs from "../components/AboutUs.astro";
 ---
 
 <Layout title="The Red Arrows Trust">
@@ -45,11 +46,17 @@ import About from "../components/About.astro";
                 class="rounded px-4 py-2 text-xl font-semibold text-govblue underline underline-offset-2 transition-colors hover:text-rafblue hover:decoration-4"
                 x-on:click="aboutOpen = true">About us</button
               >
+              <a
+                href="/apply-for-funding"
+                class="rounded px-4 py-2 text-xl font-semibold text-govblue underline underline-offset-2 transition-colors hover:text-rafblue hover:decoration-4"
+                >Apply for funding</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
+    <AboutUs />
   </main>
 </Layout>
 <!-- <video
