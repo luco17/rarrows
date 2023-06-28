@@ -1,13 +1,13 @@
 ---
 interface Props {
-  reversed: boolean;
+  reversed?: boolean;
   imageSrc: string;
   altText: string;
   title: string;
   bodyText: string;
 }
 
-const { reversed, imageSrc, altText, title, bodyText } = Astro.props;
+const { reversed = false, imageSrc, altText, title, bodyText } = Astro.props;
 
 const order = reversed ? "md:order-last" : "";
 const textAlign = reversed ? "md:text-right" : "md:text-left";
@@ -22,7 +22,7 @@ const textAlign = reversed ? "md:text-right" : "md:text-left";
     <p class={textAlign}>{bodyText}</p>
   </div>
   <!-- image div -->
-  <div class="">
+  <div>
     <img src={imageSrc} alt={altText} class="rounded-md object-cover" />
   </div>
 </div>
