@@ -1,88 +1,121 @@
 <div
-  class="fixed inset-0 z-10 flex items-center justify-center overflow-auto"
-  aria-labelledby="modal-title"
+  class="relative z-10"
+  aria-labelledby="slide-over-title"
   role="dialog"
   aria-modal="true"
   x-show="aboutOpen"
-  x-cloak
+  x-transition:enter="ease-out duration-500"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="ease-in duration-500"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
 >
-  <div
-    class="fixed inset-0 bg-gray-800 bg-opacity-20 backdrop-blur-sm transition-opacity"
-    x-show="aboutOpen"
-    x-transition:enter="ease-out duration-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="ease-in duration-200"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-  >
-  </div>
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-  <div class="mx-auto w-[90%] max-w-4xl">
-    <div
-      class="relative flex flex-col items-center space-y-4 rounded-xl bg-slate-900 p-4 shadow-xl transition-all md:p-10 text-white"
-      x-show="aboutOpen"
-      x-on:click.away="aboutOpen = false"
-      x-transition:enter="transition ease-out duration-300 transform"
-      x-transition:enter-start="opacity-0 scale-95"
-      x-transition:enter-end="opacity-100 scale-100"
-      x-transition:leave="transition ease-in duration-200 transform"
-      x-transition:leave-start="opacity-100 scale-100"
-      x-transition:leave-end="opacity-0 scale-95"
-      x-cloak
-      style="max-height: calc(100vh - 2rem); overflow-y: auto;"
-    >
-      <h2 class="text-center text-4xl font-semibold">About</h2>
-      <p>
-        The Red Arrows Trust is a charitable organization dedicated to making a
-        positive impact through partnership and sponsorship of worthy causes. We
-        the power of collaboration and work closely with organizations that
-        share our vision of creating a better future for communities across the
-        country.
-      </p>
-      <p>
-        Each year, the Red Arrows Trust commits between £100,000 and £150,000 to
-        support a wide range of charitable initiatives. Through our financial
-        contributions and strategic partnerships, we aim to make a meaningful
-        difference in areas such as education, healthcare, social welfare, and
-        environmental conservation.
-      </p>
-
-      <p>
-        At the Red Arrows Trust, we recognize that our impact is made possible
-        through the generosity and support of individuals like you. Your
-        contributions, whether financial or through advocacy, are invaluable in
-        helping us continue our mission of supporting and empowering worthy
-        causes across the UK.
-      </p>
-
-      <p>
-        Together, we can make a difference and shape a brighter future for those
-        in need. Join us in our commitment to building a stronger, more
-        compassionate society.
-      </p>
-
-      <div class="flex space-x-4">
-        <a
-          class="font-semibold text-rafaltblue underline hover:text-sky-700 hover:decoration-4"
-          href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/283461/trustees"
-          >View Trustees</a
-        >
-        <button
-          class="font-bold hover:text-white/80"
-          x-on:click="aboutOpen = false">Close</button
-        >
-      </div>
-
-      <span class="text-center text-xs"
-        >&reg; charity number 283461</span
+  <div class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div
+        class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+        x-show="aboutOpen"
+        x-on:click.away="aboutOpen = false"
+        x-transition:enter="transition ease-out duration-300 transform"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition ease-in duration-200 transform"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        x-cloak
       >
+        <div class="pointer-events-auto w-screen max-w-md">
+          <div
+            class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl"
+          >
+            <div class="px-4 sm:px-6">
+              <div class="flex items-start justify-between">
+                <h2
+                  class="text-xl font-semibold leading-6 text-gray-900"
+                  id="slide-over-title"
+                >
+                  About
+                </h2>
+                <div class="ml-3 flex h-7 items-center">
+                  <button
+                    @click="aboutOpen = false"
+                    type="button"
+                    class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-rafred focus:ring-offset-2"
+                  >
+                    <span class="sr-only">Close panel</span>
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <article
+              class="prose relative mt-6 flex-1 px-4 lg:prose-lg sm:px-6"
+            >
+              <p>
+                The Red Arrows Trust is a charitable organization dedicated to
+                making a positive impact through partnership and sponsorship of
+                worthy causes. We the power of collaboration and work closely
+                with organizations that share our vision of creating a better
+                future for communities across the country.
+              </p>
+              <p>
+                Each year, the Red Arrows Trust commits between £100,000 and
+                £150,000 to support a wide range of charitable initiatives.
+                Through our financial contributions and strategic partnerships,
+                we aim to make a meaningful difference in areas such as
+                education, healthcare, social welfare, and environmental
+                conservation.
+              </p>
+              <p>
+                At the Red Arrows Trust, we recognize that our impact is made
+                possible through the generosity and support of individuals like
+                you. Your contributions, whether financial or through advocacy,
+                are invaluable in helping us continue our mission of supporting
+                and empowering worthy causes across the UK.
+              </p>
+              <p>
+                Together, we can make a difference and shape a brighter future
+                for those in need. Join us in our commitment to building a
+                stronger, more compassionate society.
+              </p>
+            </article>
+
+            <div class="mt-4 flex space-x-4 self-center">
+              <a
+                class="font-semibold text-rafaltblue underline hover:text-sky-700 hover:decoration-4"
+                href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/283461/trustees"
+              >
+                View Trustees
+              </a>
+              <button
+                class="font-bold hover:text-white/80"
+                x-on:click="aboutOpen = false"
+              >
+                Close
+              </button>
+            </div>
+
+            <span class="mt-2 text-center text-xs">
+              &reg; charity number 283461
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<style>
-  [x-cloak] {
-    display: none;
-  }
-</style>
