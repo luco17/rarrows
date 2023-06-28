@@ -1,28 +1,28 @@
 ---
 interface Props {
-  reversed: boolean;
+  reversed?: boolean;
   imageSrc: string;
   altText: string;
   title: string;
   bodyText: string;
 }
 
-const { reversed, imageSrc, altText, title, bodyText } = Astro.props;
+const { reversed = false, imageSrc, altText, title, bodyText } = Astro.props;
 
 const order = reversed ? "md:order-last" : "";
 const textAlign = reversed ? "md:text-right" : "md:text-left";
 ---
 
 <div class="grid grid-cols-1 items-center gap-x-8 gap-y-4 md:grid-cols-2">
-  <!-- Text div -->
+  {/* Text div */}
   <div class={`${order} flex flex-col space-y-2`}>
     <h2 class={`text-center text-4xl font-bold ${textAlign} md:text-6xl`}>
       {title}
     </h2>
     <p class={textAlign}>{bodyText}</p>
   </div>
-  <!-- image div -->
-  <div class="">
+  {/* Image div */}
+  <div>
     <img src={imageSrc} alt={altText} class="rounded-md object-cover" />
   </div>
 </div>
