@@ -23,18 +23,21 @@
       <button
         class="rounded bg-rafred px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-red-700"
         x-on:click="window.alert('Redirect to Stripe or other payment provider')"
-        >Make a donation
-        <button
-          class="rounded border-2 px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-rafaltblue"
-          x-on:click="aboutOpen = true">Apply for a grant</button
-        >
+      >
+        Make a donation
       </button>
+      <a
+        class="rounded border-2 px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-rafaltblue"
+        href="#apply"
+      >
+        Apply for a grant
+      </a>
     </div>
     <div class="group absolute bottom-2 w-20 cursor-pointer lg:bottom-8">
       <a href="#about">
         <img
           src="falconTopDown.png"
-          alt="falcon menu plane"
+          alt="plane to scroll down"
           class="rotate-180 transition-transform duration-150 ease-linear hover:skew-y-12"
         />
       </a>
