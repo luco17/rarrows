@@ -20,7 +20,7 @@
 
   <div class="mx-auto w-[90%] max-w-4xl">
     <div
-      class="relative flex flex-col items-center space-y-4 rounded-xl bg-slate-900 p-4 shadow-xl transition-all md:p-10"
+      class="relative flex flex-col items-center space-y-4 rounded-xl bg-slate-900 p-4 shadow-xl transition-all md:p-10 text-white"
       x-show="aboutOpen"
       x-on:click.away="aboutOpen = false"
       x-transition:enter="transition ease-out duration-300 transform"
@@ -32,15 +32,15 @@
       x-cloak
       style="max-height: calc(100vh - 2rem); overflow-y: auto;"
     >
-      <h2 class="text-center text-4xl font-semibold text-white">About</h2>
-      <p class="text-white">
+      <h2 class="text-center text-4xl font-semibold">About</h2>
+      <p>
         The Red Arrows Trust is a charitable organization dedicated to making a
         positive impact through partnership and sponsorship of worthy causes. We
         the power of collaboration and work closely with organizations that
         share our vision of creating a better future for communities across the
         country.
       </p>
-      <p class="text-white">
+      <p>
         Each year, the Red Arrows Trust commits between £100,000 and £150,000 to
         support a wide range of charitable initiatives. Through our financial
         contributions and strategic partnerships, we aim to make a meaningful
@@ -48,7 +48,7 @@
         environmental conservation.
       </p>
 
-      <p class="text-white">
+      <p>
         At the Red Arrows Trust, we recognize that our impact is made possible
         through the generosity and support of individuals like you. Your
         contributions, whether financial or through advocacy, are invaluable in
@@ -56,7 +56,7 @@
         causes across the UK.
       </p>
 
-      <p class="text-white">
+      <p>
         Together, we can make a difference and shape a brighter future for those
         in need. Join us in our commitment to building a stronger, more
         compassionate society.
@@ -69,12 +69,12 @@
           >View Trustees</a
         >
         <button
-          class="font-bold text-white hover:text-white/80"
+          class="font-bold hover:text-white/80"
           x-on:click="aboutOpen = false">Close</button
         >
       </div>
 
-      <span class="text-center text-xs text-white"
+      <span class="text-center text-xs"
         >&reg; charity number 283461</span
       >
     </div>
