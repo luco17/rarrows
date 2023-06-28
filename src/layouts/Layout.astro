@@ -1,20 +1,17 @@
----
-export interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
----
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>The Red Arrows Trust</title>
+    <meta
+      content="The Red Arrows Trust support worthy causes throughout the UK"
+      name="description"
+    />
+    <meta content="website" property="og:type" />
+    <meta property="og:image" content="/ogImg.jpg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
     <style is:global>
       [x-cloak] {
         display: none;
@@ -39,6 +36,7 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
+          n.ariaHidden = true;
           n.className =
             "h-1 w-1 rounded absolute bg-red-500 pointer-events-none hidden md:block";
           document.body.appendChild(n);
@@ -50,6 +48,7 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
+          n.ariaHidden = true;
           n.className =
             "h-1 w-1 rounded absolute bg-sky-500 pointer-events-none hidden md:block";
           document.body.appendChild(n);
@@ -61,6 +60,7 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
+          n.ariaHidden = true;
           n.className =
             "h-1 w-1 rounded absolute bg-neutral-100 pointer-events-none hidden md:block";
           document.body.appendChild(n);

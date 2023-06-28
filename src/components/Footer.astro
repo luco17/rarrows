@@ -1,10 +1,14 @@
+---
+import SixworksSVG from "../components/SixworksSVG.astro";
+---
+
 <footer class="w-full bg-gradient-to-b from-rafblue to-black p-4 md:p-12">
   <div class="mx-auto max-w-7xl space-y-4">
     <hr />
     <div
-      class="grid grid-cols-1 place-items-center justify-items-center space-y-4 md:grid-cols-3"
+      class="grid grid-cols-1 items-start justify-items-center space-y-4 md:grid-cols-4 lg:items-center"
     >
-      <div class="w-80 sm:w-96">
+      <div class="max-w-[350px]">
         <img
           src="rat_horizontal.png"
           alt="Red Arrows Trust Logo"
@@ -14,12 +18,21 @@
       <a
         class="font-semibold text-white underline hover:text-sky-700 hover:decoration-4"
         href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/283461/trustees"
-        >View Trustees</a
       >
+        View Trustees
+      </a>
       <a
         class="font-semibold text-white underline hover:text-sky-700 hover:decoration-4"
         href="mailto:trustee@redarrowstrust.org.uk">Contact us</a
       >
+      <a
+        href="https://www.sixworks.net/"
+        class="flex space-x-2 text-sm text-white"
+        target="_blank"
+      >
+        <span class="mt-[3px]">Website by</span>
+        <SixworksSVG />
+      </a>
     </div>
     <div class="mx-auto flex max-w-2xl flex-col space-y-4 text-sm text-white">
       <p>
