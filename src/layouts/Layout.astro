@@ -16,34 +16,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <!-- <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script> -->
-    <style is:global>
-      .red-trail {
-        position: absolute;
-        height: 4px;
-        width: 4px;
-        border-radius: 4px;
-        background: orangered;
-        pointer-events: none;
-      }
-
-      .blue-trail {
-        position: absolute;
-        height: 4px;
-        width: 4px;
-        border-radius: 4px;
-        background: dodgerblue;
-        pointer-events: none;
-      }
-
-      .white-trail {
-        position: absolute;
-        height: 4px;
-        width: 4px;
-        border-radius: 4px;
-        background: whitesmoke;
-        pointer-events: none;
-      }
-    </style>
+    <style is:global></style>
   </head>
   <body class="scroll-smooth">
     <slot />
@@ -63,7 +36,8 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
-          n.className = "red-trail";
+          n.className =
+            "h-1 w-1 rounded absolute bg-red-500 pointer-events-none hidden md:block";
           document.body.appendChild(n);
           return n;
         })();
@@ -73,7 +47,8 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
-          n.className = "blue-trail";
+          n.className =
+            "h-1 w-1 rounded absolute bg-sky-500 pointer-events-none hidden md:block";
           document.body.appendChild(n);
           return n;
         })();
@@ -83,7 +58,8 @@ const { title } = Astro.props;
         this.y = 0;
         this.node = (function () {
           var n = document.createElement("div");
-          n.className = "white-trail";
+          n.className =
+            "h-1 w-1 rounded absolute bg-neutral-100 pointer-events-none hidden md:block";
           document.body.appendChild(n);
           return n;
         })();
