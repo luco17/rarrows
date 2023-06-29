@@ -1,18 +1,26 @@
 <div
-  class="h-[90vh] bg-[url('/rarrowXL.jpeg')] bg-cover bg-center bg-no-repeat sm:h-screen"
+  class="h-[90vh] bg-[url('/rarrowXL.jpeg')] bg-cover bg-center bg-no-repeat backdrop-blur-md sm:h-screen"
   id="hero"
 >
   <div
-    class="relative flex h-full w-full flex-col items-center space-y-4 pt-14 backdrop-blur-md md:pt-20 2xl:pt-40"
+    class="relative flex h-full w-full flex-col items-center space-y-4 backdrop-blur-md"
     x-data
   >
+    <nav class="hidden p-4 md:block lg:self-start">
+      <div class="max-w-[300px]">
+        <img
+          src="rat_horizontal.png"
+          alt="Red Arrows Trust Logo"
+          class="image-cover"
+        />
+      </div>
+    </nav>
     {/* Start hero content */}
-    <div class="hidden w-48 md:block">
-      <img src="planeDiamond.png" alt="Red Arrows Trust Diamond 9" />
-    </div>
     {/* Text container */}
-    <div class="max-w-3xl space-y-2 text-white">
-      <h1 class="text-center text-4xl font-bold text-white md:text-8xl">
+    <div class="max-w-3xl space-y-2 pt-8 text-white lg:pt-4">
+      <h1
+        class="text-center text-4xl font-bold text-white md:text-6xl lg:text-8xl"
+      >
         Support the best in British aviation
       </h1>
       <p class="text-center text-lg">
@@ -33,7 +41,7 @@
         Apply for a grant
       </a>
     </div>
-    <div class="group absolute bottom-2 w-20 cursor-pointer lg:bottom-8">
+    <div class="absolute bottom-2 w-20 cursor-pointer lg:bottom-8">
       <a href="#about">
         <img
           src="falconTopDown.png"
