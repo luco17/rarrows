@@ -15,13 +15,15 @@ module.exports = {
           "100%": { transform: "translateY(0)" },
         },
         fadeOpacity: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
-        fadeUp: "fadeUp 0.8s ease forwards 0.5s",
-        fadeOpacity: "fadeOpacity 0.4s ease forwards 0.5s",
+        fadeUpIn:
+          "fadeUp 0.8s ease forwards 0.5s, fadeOpacity 0.4s ease forwards 0.5s",
+        fadeUpIn2:
+          "fadeUp 0.8s ease forwards 0.75s, fadeOpacity 0.4s ease forwards 0.75s",
       },
     },
   },

@@ -18,22 +18,24 @@
     {/* Start hero content */}
     {/* Text container */}
     <div class="max-w-3xl space-y-2 px-2 pt-8 text-white md:px-0 lg:pt-4">
-      <h1 class="text-center text-4xl font-bold md:text-6xl lg:text-8xl">
+      <h1
+        class="translate-y-5 animate-fadeUpIn text-center text-4xl font-bold opacity-0 md:text-6xl lg:text-8xl"
+      >
         Support the best in British aviation
       </h1>
-      <p class="text-center text-lg">
+      <p class="translate-x-5 animate-fadeUpIn2 text-center text-lg opacity-0">
         The Red Arrows Charity Trust supports worthy causes throughout the UK.
       </p>
     </div>
     <div class="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
       <button
-        class="rounded bg-rafred px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-red-700"
+        class="animate-[fadeOpacity_0.8s_ease_1.25s_forwards] rounded bg-rafred px-4 py-2 text-xl font-semibold text-white opacity-0 transition-colors hover:bg-red-700"
         x-on:click="window.alert('Redirect to Stripe or other payment provider')"
       >
         Make a donation
       </button>
       <a
-        class="rounded border-2 px-4 py-2 text-xl font-semibold text-white transition-colors hover:bg-rafaltblue"
+        class="animate-[fadeOpacity_0.8s_ease_1.5s_forwards] rounded border-2 px-4 py-2 text-xl font-semibold text-white opacity-0 transition-colors hover:bg-rafaltblue"
         href="#apply"
       >
         Apply for a grant
