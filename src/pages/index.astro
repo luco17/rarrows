@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Eligibility from "../components/Eligibility.astro";
-import Eligibility2 from "../components/Eligibility2.astro";
 import AboutUs from "../components/AboutUs.astro";
 import Hero from "../components/Hero.astro";
 import Grant from "../components/Grant.astro";
@@ -10,7 +9,7 @@ import Footer from "../components/Footer.astro";
 
 <Layout>
   <main x-data="{ aboutOpen: false }" @keydown.escape="aboutOpen = false">
-    <Eligibility2 />
+    <Eligibility />
     <Hero />
     <AboutUs />
     <Grant />
