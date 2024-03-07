@@ -43,7 +43,18 @@
         Apply for a grant
       </a>
     </div>
-    <div class="absolute bottom-2 w-20 cursor-pointer lg:bottom-8">
+    <div
+      class="group absolute bottom-2 flex w-20 cursor-pointer flex-col text-center text-sm lg:bottom-8"
+    >
+      <span
+        x-data="{ show: false }"
+        x-show="show"
+        x-init="setTimeout(() => show = true, 3000)"
+        x-transition.opacity
+        x-transition:enter.duration.500ms
+        class="w-full font-semibold text-rafblue transition-transform ease-in group-hover:block"
+        >Scroll down</span
+      >
       <a href="#about">
         <img
           src="falconTopDown.png"
